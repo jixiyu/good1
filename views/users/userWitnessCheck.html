@@ -1,0 +1,72 @@
+{% extends 'layout2.html' %}
+
+{% block main %}
+
+<link rel="stylesheet" type="text/css" href="/public/pro.css">
+
+<form>
+
+    <table class="table table-hover">
+        <tr>
+            <td>
+                <label for="exampleInputEmail1">项目编号</label>
+            </td>
+            <td>
+                <label for="exampleInputEmail1">凭证说明</label>
+            </td>
+            <td>
+                <label for="exampleInputPassword1">证据图片</label>
+            </td>
+            <td>
+                <label for="exampleInputPassword1">以太坊地址</label>
+            </td>
+            <td>
+                <label for="name">需要的金额</label>
+            </td>
+            <td>
+                <label for="name">是否通过</label>
+            </td>
+            <td>
+                <label for="name">修改意见</label>
+            </td>
+        </tr>
+        {% for wit in witness %}
+        <tr hi>
+           
+            <td>{{wit.proID.toString()}}</td>
+            <td>{{wit.explain.toString()}}</td>
+
+            <td>
+                    <image width="50px" height="50px" src="/{{wit.WitnessPhoto.toString()}}"></image>
+                </td>
+
+        
+            <td>{{wit.addr1.toString()}}</td>
+           
+           
+            
+            <td>{{wit.money1.toString()}}</td>
+           
+
+            <!-- 编辑修改意见 -->
+            {% if wit.isAgree1.toString() =="2" %}
+            <td class="danger">
+                <p>待审核</p>
+            </td>
+            {% elseif wit.isAgree1.toString() =="1" %}
+            <td class="success">
+                <p>审核通过</p>
+            </td>
+            {% else %}
+            <td class="danger"><a href="/user12/Doproject/add">审核被拒，请重新发起</a></td>
+            {% endif %}
+            <td>{{wit.revice1.toString()}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</form>
+{% include 'page2.html' %}
+{% endblock %}
+

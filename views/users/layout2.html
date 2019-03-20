@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户后台管理</title>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/public/css/bootstrap-theme.min.css" type="text/css" />
+
+    <script src="http://how2j.cn/study/jquery.min.js"></script>
+
+    <script src="/public/js/bootstrap.min.js"></script>
+
+   
+</head>
+
+<body>
+
+    <!--顶部导航-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- //首页   用来查看所有的项目 -->
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="javascript:;">用户管理空间</a>
+                </div>
+
+                <div class="navbar-header" >
+                        <a class="navbar-brand" href="/user12/Doproject/projectIndex">首页</a>
+                    </div>
+
+          
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/user12/Doproject/add">发起项目</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/user12/Doproject/checkUserProject">项目审核情况</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/user12/Doproject/addWitness">提交证据</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/user12/Doproject/userWitnessCheck">证据审核情况</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <!-- <ul class="nav navbar-nav">
+                <li><a href="/admin/user">项目管理</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/admin/category">项目审核</a></li>
+                        
+                    </ul>
+                </li>
+               
+            </ul> -->
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">{{userInfo.username}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        {%block main%}{%endblock%}
+    </div>
+    {%block button%}
+
+{%endblock%}
+
+</body>
+<script type="text/javascript" src="../public/addProject.js"></script>
+
+</html>

@@ -1,0 +1,145 @@
+{% extends 'layout2.html' %}
+
+{% block main %}
+
+<link rel="stylesheet" type="text/css" href="/public/pro.css">
+
+<form>
+
+    <table class="table table-hover">
+        <tr>
+            <td>
+                <label for="exampleInputEmail1">项目编号</label>
+            </td>
+            <td>
+                <label for="exampleInputEmail1">姓名</label>
+            </td>
+            <td>
+                <label for="exampleInputPassword1">身份证号码</label>
+            </td>
+            <td>
+                <label for="exampleInputPassword1">电话号码</label>
+            </td>
+            <td>
+                <label for="name">为什么需要捐款</label>
+            </td>
+            <td>
+                <label for="name">身份证正面</label>
+            </td>
+            <td>
+                <label for="name">身份证反面</label>
+            </td>
+            <td>
+                <label for="exampleInputPassword1">证明</label>
+            </td>
+            <td>
+                <label for="exampleInputPassword1">封面图</label>
+            </td>
+            <td>
+                <label for="exampleInputPassword1">申请金额</label>
+            </td>
+            <td>
+                <label for="exampleInputPassword1">申请天数</label>
+            </td>
+            <td>
+                <label for="name">是否通过</label>
+            </td>
+            <td>
+                    <label for="name">修改意见</label>
+                </td>
+        </tr>
+        {% for project in projects %}
+        <tr hi>
+                <td>null</td>
+            <td>{{project.username.toString()}}</td>
+            <td>{{project.IDnumber.toString()}}</td>
+            <td>{{project.telePhone.toString()}}</td>
+            <td>{{project.whyNeed.toString()}}</td>
+            <td>
+                <div id="bo">
+                    <image width="50px" height="50px" src="/{{project.IDimage1.toString()}}"></image>
+                </div>
+            </td>
+            <td>
+                <image width="50px" height="50px" src="/{{project.IDimage2.toString()}}"></image>
+            </td>
+            <td>
+                <image width="50px" height="50px" src="/{{project.Otherimage1.toString()}}"></image>
+            </td>
+            <td>
+                <image width="50px" height="50px" src="/{{project.Otherimage2.toString()}}"></image>
+            </td>
+            <td>{{project.money.toString()}}</td>
+            <td>{{project.Projectdays.toString()}}</td>
+
+            <!-- 编辑修改意见 -->
+            {% if project.isAgree.toString() =="2" %}
+            <td class="danger">
+                <p>待审核</p>
+            </td>
+            {% elseif project.isAgree.toString() =="1" %}
+            <td class="success">
+                <p>审核通过</p>
+            </td>
+            {% else %}
+            <td class="danger"><a href="/user12/Doproject/add">审核被拒，请重新发起</a></td>
+            {% endif %}
+            <td>{{project.advice.toString()}}</td>
+        </tr>
+        {% endfor %}
+        <!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    </div></td>
+     <!-- 身份证号码  -->
+        <!-- <div class="form-group">
+        
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div></td> -->
+        <!-- 电话号码 -->
+        <!-- <div class="form-group">
+        
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div></td> -->
+        <!-- 为什么需要捐款 -->
+        <!-- <div class="form-group">
+        
+            <textarea class="form-control" rows="3"></textarea>
+          </div></td> -->
+
+        <!-- 身份证正反面 -->
+
+        <!-- 申请金额-->
+        <!-- <td>
+            <div class="form-group">
+               
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div></td> -->
+
+        <!-- 申请天数-->
+        <!-- <td>
+            <div class="form-group">
+               
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div></td> -->
+        <!-- 封面图-->
+
+        <!-- 审核情况-->
+
+        <!-- 修改意见   若是通过了或者待审核则不出现这个-->
+        <!-- <td>
+            <div class="form-group">
+                    
+                    <textarea class="form-control" rows="3"></textarea>
+                  </div></td>
+    
+</td> -->
+        <!-- <td>
+    <button type="submit" class="btn btn-default">修改</button></td>
+</tr>  -->
+
+    </table>
+
+</form>
+
+{% include 'page.html' %}
+{% endblock %}
+

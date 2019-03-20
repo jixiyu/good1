@@ -1,0 +1,176 @@
+{% extends 'layout2.html' %}
+
+{%block main%}
+
+<form action="/user12/Doproject/addp" align="center" method="post" enctype="multipart/form-data" >
+    <fieldset>
+        <legend>发起捐款项目:</legend>
+        <!-- 姓名： projectUsername -->
+        姓名:
+        <input type="text" name="projectUsername" />
+        <br />
+        <br />
+        <!-- 性别： gender -->
+        性别: 
+        <select name="gender">
+                {% set items=["男","女"] %}
+                {% for i in items %}
+                <!-- <script>
+                    for (i = 1; i < 31; i++) {
+                        document.write("<option value='" + i + "'>" + i + "</option>");
+                    }
+                </script> -->
+                <option value='{{ i }} '>{{ i }}</option>
+                 {% endfor %}
+            </select>
+
+        <!-- <input type="radio" name="gender" value="male" />
+        女
+        <input type="radio" name="gender" value="female" /> -->
+        <br />
+        <br />
+        请输入出生年月日:
+        年份
+        <select id="year" name="year1">
+            <script>
+                for (i = 1900; i < 2010; i++) {
+                    document.write("<option value='" + i + "'>" + i + "</option>");
+                }
+            </script>
+        </select>
+        月份
+        <select name="month">
+            <script>
+                for (i = 1; i < 13; i++) {
+                    document.write("<option value='" + i + "'>" + i + "</option>");
+                }
+            </script>
+        </select>
+        日
+        <select name="day">
+            <script>
+                for (i = 1; i < 32; i++) {
+                    document.write("<option value='" + i + "'>" + i + "</option>");
+                }
+            </script>
+        </select>
+        <br />
+        <br />
+        <!-- 身份证：idendity  -->
+        身份证号：
+        <input type="text" name="idendity" />
+        <br />
+        <br />
+        <!-- 电话号码： telephone -->
+        电话号码：
+        <input type="text" name="telephone" />
+        <br />
+        <br />
+
+        <!-- 为什么需要捐款  projectWhyneed -->
+        为什么需要捐款:<br>
+        <textarea rows="5" cols="30" name="projectWhyneed"></textarea>
+        <br />
+        <br />
+
+
+        <div class="info_list" style="border-bottom:none;">
+            <div class="list_left2">身份证上传<span>(请上传身份证正反面，图片保持清晰)</span></div>
+        </div><br>
+
+        <div class="id_img_wp">
+            <input type="file" accept="image/*" onchange="getzImg(this)" style="display:none" value="" id="img_z" name="picUrl"/>
+            <input type="file" accept="image/*" onchange="getfImg(this)" value="" id="img_f" style="display:none" name="picUrl"/>
+            <div class="img_wp" onclick="zhengmian()">
+                <img src="WX20190223-103830z.png" id="zmz" />
+                <p class="img_intro">身份证正面照(示例)</p>
+            </div>
+            <br>
+            <div class="img_wp" onclick="fanmian()">
+                <img src="WX20190223-103846f.png" id="fmz" />
+                <p class="img_intro">身份证反面照</p>
+            </div>
+
+            <br>
+
+            <script>
+                $(function () {
+                    $('.img_wp img').height($('.img_wp img').width() * 0.6);
+                    $(window).resize(function () {
+                        $('.img_wp img').height($('.img_wp img').width() * 0.6);
+                    })
+                })
+                //正面
+                function zhengmian() {
+                    $('#img_z').click();
+                }
+                function getzImg(imgFile) {
+
+                    var file = imgFile.files[0];
+
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);//将文件读取为Data URL小文件   这里的小文件通常是指图像与 html 等格式的文件
+                    reader.onload = function (e) {
+                        $("#zmz").attr("src", e.target.result);
+                    }
+                }
+
+                //反面
+                function fanmian() {
+                    $('#img_f').click();
+                }
+                function getfImg(imgFile) {
+
+                    var file = imgFile.files[0];
+
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function (e) {
+                        $("#fmz").attr("src", e.target.result);
+                    }
+                }
+            </script>
+
+            上传其他证明:
+            <div align="center" >
+            <input type="file" value="myfile" name="picUrl"/><br />
+            <br />
+            </div>
+            <!-- 目标金额： money -->
+            目标金额：
+            <input type="text" name="money" />
+            <br />
+            <br />
+            申请天数：
+            <select name="days">
+                {% set items=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30] %}
+                {% for i in items %}
+                <option value='{{ i }}'>{{ i }}</option>
+                 {% endfor %}
+            </select>
+
+            <br />
+            <br />
+            <!-- //封面图  projectImage -->
+            封面图：
+            <div align="center" >
+            <input type="file" value="picUrl" name="picUrl" /><br />
+            <br />
+            <br /></div>
+            <input type="submit" value="提交项目请求">
+            <input type="button" value="取消" id="button1">
+            <br />
+    </fieldset>
+</form>
+
+<div>
+    <p class="colWarning textCenter"></p>
+</div>
+
+<script type="text/javascript" src="/public/addProject.js"></script>
+
+{%endblock%}
+
+{%block button%}
+
+{%endblock%}

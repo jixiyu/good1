@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>用户注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+</head>
+
+<body>
+    {% block top %}
+    <div class="top">
+        <h1>
+            <span style="color: rgb(217, 150, 148);">小爱心——公益捐款平台</span>
+        </h1>
+        <hr />
+        <!-- <button width=25>首页</button>
+
+        <button <a href="createProject.ejs">发起捐款项目</a> </button>
+
+        <button width=25>我要捐款</button>
+
+        <button width=25>我的</button> -->
+    </div>
+
+    {% endblock %}
+
+
+    <div class="mainRight">
+
+
+        {% if userInfo._id %}
+        <div class="rightBox" id="userInfo">
+            <div class="title"><span>用户信息:</span></div>
+            <p><span class="colDark">{{userInfo.username}}</span></p>
+
+            {% if userInfo.isAdmin %}
+            <p>
+                <span class="colDanger">你好，管理员！</span>
+
+                <a href="/admin/">进入管理</a>
+               
+            </p>
+            {% else %}
+            <p><span class="colDanger">你好，欢迎光临</span></p>
+
+            <a href="/user12/">进入我的空间</a>
+            {% endif %}
+
+            <p><span class="colDark"><a href="javascript:;" id="logout">退出</a></span></p>
+        </div>
+        {% else %}
+
+        <div id="registerBox" style="display:none">
+            <form align="center">
+                <fieldset>
+                    <legend>注册新用户:</legend>
+                    我的以太坊地址:
+                    <br>
+                    <div class="dizhi12" value="123"></div>
+                    <br />
+                    姓名:
+                    <input type="text" name="username" />
+                    <br />
+                    密码:
+                    <input type="password" name="password" />
+                    <br />
+
+                    <br />
+                    确定密码:
+                    <input type="password" name="repassword" />
+                    <br />
+
+                    <br />
+                    <button>注册</button>
+                    <!-- <input type="submit" value="注册">
+            <input type="submit" value="重填"> -->
+                    <a class="colMint" href="javascript:;">立刻登录吧</a>
+                    <br />
+                    <p class="colWarning textCenter"></p>
+
+                </fieldset>
+            </form>
+
+        </div>
+
+
+
+        <!-- // 登录部分 -->
+        <div id="loginBox">
+
+            <form height:200px width:500px align="center">
+                <fieldset>
+                    <legend>用户登录:</legend>
+
+                    <a>
+                        <h2>输入以太坊地址：</h2>
+                    </a>
+                    <input type="text" value="">
+                    <br>
+                    <br>
+
+                    角色:
+                    <select style="width:190px;" name="juese">
+                        <option value="">用户</option>
+                        <option value="cd">管理员</option>
+                    </select>
+                    <br />
+                    <br />
+                    姓名:
+                    <input type="text" name="username" />
+                    <br />
+                    <br />
+                    密码:
+                    <input type="password" name="password" />
+                    <br />
+                    <br />
+                    <button>登录</button>
+                    <!-- <input type="submit" value="登录"> -->
+                    <a class="colMint" href="javascript:;">没有账号？注册一个</a>
+                    <br />
+                    <p class="colWarning textCenter"></p>
+                </fieldset>
+            </form>
+        </div>
+        <!-- {%endif%} -->
+        </div>
+
+
+</body>
+<script src="http://how2j.cn/study/jquery.min.js"></script>
+
+<script type="text/javascript" src="../public/register.js"></script>
+
+</html>
